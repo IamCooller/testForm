@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Poliklinika</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <div class="container">
+                <h2>Шаг 1.</h2>
+                <form action="">
+                    <div class="form__list">
+                        <div class="row">
+                            <div class="form__list-item col-4">
+                                <p>Выберите страну</p>
+                                <select class="form-select form-country" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                  </select>
+                            </div>
+
+
+                            <div class="form__list-item col-4 ">
+                                <p>Тип визы</p>
+                                <select class="form-select form-visa" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                            </div>
+
+                        </div>
+                        <div class="row align-items-center mt-4">
+                            <div class="form__list-data col-4">
+                                <div class="form__list-data_left">
+                                    <p>Въезд</p>
+                                    <input class="form-dataIn" type="date" name="calendar">
+                                </div>
+                                <div class="form__list-data_right">
+                                    <p>Выезд</p>
+                                    <input class="form-Out" type="date" name="calendar">
+                                </div>
+
+                            </div>
+                            <div class="form__list-item col-4">
+                                <p>Количество заездов</p>
+                                <select class="form-select form-arrivals" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                            </div>
+                            <div class="form__list-item col-4">
+                                <p>Время обработки
+                                </p>
+                                <select class="form-select form-processing" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form__bottom">
+                        <div class="form__bottom-price">
+                            <p>Предварительная стоимость:
+                            </p>
+                            <span>€10.99</span>
+                        </div>
+                        <div class="form__bottom-button">
+                            Продолжить <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.105225 10.5948L4.69897 6.0011L0.105225 1.40735L1.51147 0.00109863L7.51147 6.0011L1.51147 12.0011L0.105225 10.5948Z" fill="white"/>
+                                </svg>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
