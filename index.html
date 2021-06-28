@@ -8,8 +8,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="js/main.js"></script>
     <title>Poliklinika</title>
 </head>
 
@@ -23,11 +25,8 @@
                         <div class="row">
                             <div class="form__list-item col-4">
                                 <p>Выберите страну</p>
-                                <select class="form-select form-country" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select form-country">
+
                                   </select>
                             </div>
 
@@ -35,10 +34,7 @@
                             <div class="form__list-item col-4 ">
                                 <p>Тип визы</p>
                                 <select class="form-select form-visa" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                   
                                       </select>
                             </div>
 
@@ -58,20 +54,14 @@
                             <div class="form__list-item col-4">
                                 <p>Количество заездов</p>
                                 <select class="form-select form-arrivals" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                     
                                       </select>
                             </div>
                             <div class="form__list-item col-4">
                                 <p>Время обработки
                                 </p>
                                 <select class="form-select form-processing" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                      
                                       </select>
                             </div>
                         </div>
@@ -81,7 +71,7 @@
                         <div class="form__bottom-price">
                             <p>Предварительная стоимость:
                             </p>
-                            <span>€10.99</span>
+                            <span class="MainPrice">€0.00</span>
                         </div>
                         <div class="form__bottom-button">
                             Продолжить <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,10 +83,84 @@
                 </form>
             </div>
 
-        </section>
     </main>
 
-    <script src="js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            let dropdown = $('.form-select');
+            let dropdownCountry = $('.form-country');
+            let dropdownVisa = $('.form-visa');
+            let dropdownformArrivals = $('.form-arrivals');
+            let dropdownformProcessing = $('.form-processing');
+
+            dropdown.empty();
+
+            dropdownCountry.append('<option selected="true" disabled>Страна</option>');
+            dropdownVisa.append('<option selected="true" disabled>Виза</option>');
+            dropdownformArrivals.append('<option selected="true" disabled>Заезд</option>');
+            dropdownformProcessing.append('<option selected="true" disabled>Обработка</option>');
+
+
+
+            var url = "calc.json";
+            $.getJSON(url)
+                .done(function(data) {
+
+                    $.each(data.countries, function(key, entry) {
+                        dropdownCountry.append($('<option id="selectId"></option>').attr('value', entry.id).text(entry.name));
+
+                        $('#selectId option').prop('selected', true);
+
+                    });
+                });
+
+            $.getJSON(url)
+                .done(function(data) {
+
+                    $.each(data.types, function(key, entry) {
+                        dropdownVisa.append($('<option></option>').attr('value', entry.id).text(entry.name).attr('price', entry.price));
+
+                    });
+                });
+
+            $.getJSON(url)
+                .done(function(data) {
+
+                    $.each(data.try, function(key, entry) {
+                        dropdownformArrivals.append($('<option></option>').attr('value', entry.id).text(entry.name).attr('relative', entry.relative).attr('price', entry.price));
+
+                    });
+                });
+
+            $.getJSON(url)
+                .done(function(data) {
+                    console.log(data)
+                    $.each(data.types, function(key, entry) {
+                        dropdownformProcessing.append($('<option></option>').attr('value', entry.id).text(entry.name).attr('relative', entry.relative).attr('price', entry.price));
+                    });
+                });
+
+            let price = $('.MainPrice');
+
+            let resultCountry = parseFloat($(".form-country option").val());
+            let result = price.append(resultCountry);
+            console.log(resultCountry)
+
+            let dropdownOption = $('select option');
+
+            dropdownOption.prop('selected', true);
+            console.log(123);
+
+
+            $('#tt')
+                .removeAttr('selected')
+                .attr('selected', true)
+                .change()
+                .css('background', 'red')
+
+
+        });
+    </script>
 </body>
 
 </html>
